@@ -17,7 +17,7 @@ const Login = () =>{
   const onSignInPressed = () => {
     console.warn("Sign In");
 
-    navigation.navigate('Map');
+    navigation.navigate('maps');
   }
   
   return (

@@ -21,7 +21,7 @@ const URA_API_URL = 'https://www.ura.gov.sg/uraDataService/insertNewToken.action
 const govsgurl = 'https://api.data.gov.sg/v1/transport/carpark-availability'
 const accessKey = '098ecd87-27d6-414e-adc6-e8e7f3e65207'; // Use the provided access key
 const markers = [];
-const App = () => {
+const maps = () => {
 
 
   const [position, setPosition] = useState({
@@ -200,4 +200,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Map;
+export default maps;
