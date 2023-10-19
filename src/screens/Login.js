@@ -8,6 +8,7 @@ const Login = () =>{
   const {height} = useWindowDimensions();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const onSignUpPressed = () => {
     console.warn("Sign Up");
 
@@ -18,6 +19,12 @@ const Login = () =>{
     console.warn("Sign In");
 
     navigation.navigate('maps');
+  }
+
+  const onForgotPressed = () => {
+    console.warn("Forgot Password");
+
+    navigation.navigate('ForgotPassword');
   }
   
   return (
@@ -70,6 +77,14 @@ const Login = () =>{
             </TouchableOpacity>
           </View>
 
+          <View style = {styles.forgetPassword}>
+            <TouchableOpacity onPress={onForgotPressed}>
+              <View style = {styles.button}>
+                <Text style = {styles.buttonText}>Forgot Password? </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
             <View style = {styles.formFooter}> 
               <Text style = {styles.bottomtext}>Don't have an account?{' '}</Text>
               <TouchableOpacity 
@@ -93,14 +108,17 @@ const styles = StyleSheet.create({
     padding: 24,
     flex: 1,
   },
+
   header: {
     marginVertical: 36
   },
+
   headerImg: {
     width: 400,
     height: 150,
     alignSelf: "center",
   },
+
   title: {
     fontSize: 28,
     fontWeight: '700',
@@ -173,7 +191,11 @@ const styles = StyleSheet.create({
   bottomtext:{
     fontSize: 18,
     fontWeight: '600',
-  }
+  },
+
+  forgetPassword:{
+
+  },
 });
 
 export default Login;
