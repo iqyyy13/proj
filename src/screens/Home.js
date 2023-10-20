@@ -46,6 +46,8 @@ const Home = () => {
     latitude: 103.85885005071715,
   });
 
+
+
   useEffect(() => {
 
 
@@ -182,7 +184,7 @@ const Home = () => {
     
     <View style={styles.container}>
       {carparkData.length > 0 ? (
-        <MapView style={styles.map} region={region} >
+        <MapView style={styles.map} region={region}>
           <Marker
             draggable
             pinColor='#0000ff'
