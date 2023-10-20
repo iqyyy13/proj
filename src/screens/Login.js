@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Alert, useWindowDimensions} from "react-native";
+import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Alert, useWindowDimensions, Switch} from "react-native";
 import Logo from '../../assets/naplogo.png';
 import { useNavigation } from "@react-navigation/native";
+import Checkbox from 'expo-checkbox';
 
 const Login = () =>{
   const navigation = useNavigation();
   const {height} = useWindowDimensions();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
   const onSignUpPressed = () => {
     console.warn("Sign Up");
@@ -67,6 +69,16 @@ const Login = () =>{
               onChangeText={newpassword => setPassword(newpassword)}
             />
           </View>
+
+          <View style = {styles.checkboxContainer}>
+            <Checkbox
+              disabled = {false}
+              value = {toggleCheckBox}
+              onValueChange={(newValue) => setToggleCheckBox(newValue)}
+            />
+              <Text style = {styles.checkboxText}> Remember Me </Text>
+          </View>
+          
 
           <View style ={styles.formAction}>
             <TouchableOpacity 
@@ -195,6 +207,17 @@ const styles = StyleSheet.create({
 
   forgetPassword:{
 
+  },
+
+  checkboxContainer: {
+    flexDirection : 'row',
+    alignItems: 'center',
+  },
+
+  checkboxText : {
+    fontSize: 16,
+    marginLeft: 10,
+    fontWeight: '600',
   },
 });
 
