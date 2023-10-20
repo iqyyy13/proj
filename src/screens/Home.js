@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import MapView, {Marker } from 'react-native-maps';
+import MapView, {Marker, Circle } from 'react-native-maps';
 import axios from 'axios';
 import proj4 from 'proj4';
 import data from '../../assets/hdb_carpark.json';
@@ -189,6 +189,10 @@ const Home = () => {
             coordinate={{latitude: 1.3302797965982769, longitude: 103.85894386136764}}
             onDragEnd={(e) => setDraggableMarkerCoord(e.nativeEvent.coordinate)}
 
+          ></Marker>
+          <Circle
+            center = {draggableMarkerCoord}
+            radius = {1000}
           />
           {markers}
             <Marker
