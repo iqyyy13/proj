@@ -46,8 +46,14 @@ const Home = () => {
     latitude: 103.85885005071715,
   });
 
+  const handleMarkerDrag = (e) => {
+    // Update the region based on the marker's new position
+    const { latitude, longitude } = e.nativeEvent.coordinate;
+    setDraggableMarkerCoord(e.nativeEvent.coordinate);
+    setRegion({ ...region, latitude, longitude });
+  };
 
-
+  
   useEffect(() => {
 
 
@@ -188,8 +194,8 @@ const Home = () => {
           <Marker
             draggable
             pinColor='#0000ff'
-            coordinate={{latitude: 1.3302797965982769, longitude: 103.85894386136764}}
-            onDragEnd={(e) => setDraggableMarkerCoord(e.nativeEvent.coordinate)}
+            coordinate={region}
+            onDragEnd={handleMarkerDrag}
 
           ></Marker>
           <Circle
