@@ -20,13 +20,17 @@ const Login = () =>{
   const onSignInPressed = () => {
     console.warn("Sign In");
 
-    navigation.navigate('maps');
+    navigation.navigate('Home');
   }
 
   const onForgotPressed = () => {
     console.warn("Forgot Password");
 
     navigation.navigate('ForgotPassword');
+  }
+
+  const onRememberPressed = () =>{
+    console.warn ("Remember Login Details");
   }
   
   return (
@@ -75,6 +79,7 @@ const Login = () =>{
               disabled = {false}
               value = {toggleCheckBox}
               onValueChange={(newValue) => setToggleCheckBox(newValue)}
+              onPress = {onRememberPressed}
             />
               <Text style = {styles.checkboxText}> Remember Me </Text>
           </View>

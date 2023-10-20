@@ -18,10 +18,11 @@ proj4.defs([
 ]);
 
 const URA_API_URL = 'https://www.ura.gov.sg/uraDataService/insertNewToken.action';
-const govsgurl = 'https://api.data.gov.sg/v1/transport/carpark-availability'
+const govsgurl = 'https://api.data.gov.sg/v1/transport/carpark-availability';
 const accessKey = '098ecd87-27d6-414e-adc6-e8e7f3e65207'; // Use the provided access key
 const markers = [];
-const maps = () => {
+const Home = () => {
+  
 
 
   const [position, setPosition] = useState({
@@ -34,12 +35,17 @@ const maps = () => {
   const [carparkData, setCarparkData] = useState([]);
   const [carparkData2, setCarparkData2] = useState([]);
   const [region, setRegion] = useState({
-    latitude: 1.3521, // Default latitude
-    longitude: 103.8198, // Default longitude
+    latitude: 1.3303110584045954, // Default latitude
+    longitude: 103.85885005071715, // Default longitude
     latitudeDelta: 0.02,
     longitudeDelta: 0.02,
   });
-  
+
+  const[draggableMarkerCoord, setDraggableMarkerCoord] = useState({
+    longitude: 1.3303110584045954, 
+    latitude: 103.85885005071715,
+  });
+
   useEffect(() => {
 
 
@@ -177,11 +183,18 @@ const maps = () => {
     <View style={styles.container}>
       {carparkData.length > 0 ? (
         <MapView style={styles.map} region={region} >
-        {markers}
-        <Marker
-       title='You are here'
-       description='This is a description'
-       coordinate={position}/>
+          <Marker
+            draggable
+            pinColor='#0000ff'
+            coordinate={{latitude: 1.3302797965982769, longitude: 103.85894386136764}}
+            onDragEnd={(e) => setDraggableMarkerCoord(e.nativeEvent.coordinate)}
+
+          />
+          {markers}
+            <Marker
+              title='You are here'
+              description='This is a description'
+              coordinate={position}/>
         </MapView>
       ) : (
         <Text>Loading carpark data...</Text>
@@ -200,4 +213,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default maps;
+export default Home;
