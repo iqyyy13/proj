@@ -3,15 +3,17 @@ import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacit
 import Logo from '../../assets/naplogo.png';
 import { useNavigation } from "@react-navigation/native";
 
-const ForgotPassword = () =>{
+const ChangePassword = () =>{
   const navigation = useNavigation();
   const {height} = useWindowDimensions();
-  const [email, setEmail] = useState('');
+  const [code, setCode] = useState('');
+  const [password1, setPassword1] = useState('');
+  const [password2, setPassword2] = useState('');
 
-  const onSendPressed = () => {
-    console.warn("Send Pressed");
-    
-    navigation.navigate('ChangePassword');
+  const onConfirmPressed = () => {
+    console.warn("Confirm Pressed");
+
+    navigation.navigate("Login");
   }
 
   const onBackPressed = () => {
@@ -34,25 +36,51 @@ const ForgotPassword = () =>{
 
             <View style = {styles.form}>
                 <View style = {styles.input}>
-                    <Text style = {styles.inputLabel}> Email Address </Text>
+                    <Text style = {styles.inputLabel}> Enter your code </Text>
 
                     <TextInput
                         autoCapitalize="none"
                         autoCorrect={false}
                         keyboardType= 'email-address'
                         style = {styles.inputControl}
-                        placeholder = 'Email'
+                        placeholder = 'Enter your code'
                         placeholderTextColor = '#6b7280'
-                        value = {email}
-                        onChangeText={newEmail => setEmail(newEmail)}
+                        value = {code}
+                        onChangeText={newCode => setCode(newCode)}
+                    />
+                </View>
+
+                <View style = {styles.input}>
+                    <Text style = {styles.inputLabel}> Enter new password </Text>
+
+                    <TextInput
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        keyboardType= 'email-address'
+                        style = {styles.inputControl}
+                        value = {password1}
+                        onChangeText={newPassword1 => setPassword1(newPassword1)}
+                    />
+                </View>
+
+                <View style = {styles.input}>
+                    <Text style = {styles.inputLabel}> Confirm new password </Text>
+
+                    <TextInput
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        keyboardType= 'email-address'
+                        style = {styles.inputControl}
+                        value = {password2}
+                        onChangeText={newPassword2 => setPassword2(newPassword2)}
                     />
                 </View>
 
                 <View style ={styles.formAction}>
                     <TouchableOpacity 
-                        onPress={onSendPressed}>
+                        onPress={onConfirmPressed}>
                         <View style = {styles.button}>
-                            <Text style = {styles.buttonText}>Send </Text>
+                            <Text style = {styles.buttonText}>Confirm </Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -163,4 +191,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ForgotPassword;
+export default ChangePassword;
